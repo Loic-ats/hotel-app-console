@@ -40,9 +40,16 @@ function start() {
             case "2":
                console.log('ajouter un nouveaux client')
                     service.ajouterClients()
-                    start();
+                    start(); 
 
                 break;
+
+                case "3":
+                  console.log('Rechercher un client par nom')
+                       service.rechercheClients()
+                       start(); 
+   
+                   break;
             case "99":
                 console.log("Aurevoir.")
                 rep.close();

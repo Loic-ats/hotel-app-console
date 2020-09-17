@@ -25,16 +25,31 @@ function listerClients(callbackOK, callbackKO) {
 }
 //request + requête HTTP ==> err parametre d'erreur,res ==> reponse et listeDeClient ==> parametre retour de la requête http
 
-    function ajouterClients() {
+function ajouterClients() {
 
-    request({url:backendUrl + '/clients', json: { nom: 'Bob', prenoms: 'Paul' }, method : 'POST'}, 
-    function (err, httpResponse, body) {
-        if (err) {
-          return console.error('upload failed:', err);
-        }
-        console.log('Upload successful!  Server responded with:', body);
-    });
+    request({ url: backendUrl + '/clients', json: { nom: 'Bob', prenoms: 'Paul' }, method: 'POST' },
+        function (err, httpResponse, body) {
+            if (err) {
+                return console.error('upload failed:', err);
+            }
+            console.log('Upload successful!  Server responded with:', body);
+        });
 }
-    exports.listerClients = listerClients;
-    exports.ajouterClients = ajouterClients;
 
+
+function rechercheClients(callbackOK, callbackKO) {
+
+    request(backendUrl + '/clients?nom=Bob', { json: true },
+        function (err, res, listeDeClients) {
+            //3    
+            if (err) {
+                callbackKO(err);
+            } else {
+                callbackOK(listeDeClients);
+            }
+        });
+}
+
+exports.listerClients = listerClients;
+exports.ajouterClients = ajouterClients;
+exports.rechercheClients = rechercheClients;
