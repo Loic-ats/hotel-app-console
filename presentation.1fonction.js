@@ -23,20 +23,18 @@ function start() {
 
         switch (saisie) {
             case "1":
-                service.listerClients(
-                    function (listerClients) {
-                        console.log(
-                            listerClients
-                                .map(function (client) {
-                                    return client.nom + ' ' + client.prenoms
-                                })
-                                .join('\n')
-                        );
-                        start();
-                    }, function (err) {
-                        console.log('oops');
-                        start();
-                    });
+                service.listerClients(function (resultat) {
+
+                    if (resultat.error) {
+                        console.log('oops...')
+                    } else {
+                        console.log(resultat.data);
+                    }
+                    start();
+
+
+                });
+
                 break;
 
             case "2":
