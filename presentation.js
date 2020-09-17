@@ -8,7 +8,6 @@ var rep = readline.createInterface({
     output: process.stdout
 });
 
-
 function start() {
 
     console.log("Menu");
@@ -17,7 +16,6 @@ function start() {
     console.log("3. Recherche un client par nom");
     console.log("4. Vérifier la disponibilité d'une chambre");
     console.log("99. Sortir");
-
 
     rep.question('Votre choix :', function (saisie) {
 
@@ -40,6 +38,10 @@ function start() {
                 break;
 
             case "2":
+               console.log('ajouter un nouveaux client')
+                    service.ajouterClients()
+                    start();
+
                 break;
             case "99":
                 console.log("Aurevoir.")
