@@ -1,18 +1,49 @@
+exports.demarrer = start;
+
 function start() {
 
-    var readline = require('readline');
+   var readline = require('readline');
 
-    var rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-      });
+   var rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+   });
 
-      rl.question('1. Lister les clients\n99. Sortir\n', function(saisie) {
-        // la variable `saisie` contient la saisie effectuée
-        console.log(`Vous avez saisi : ${saisie}`);
-        rl.close();// attention, une fois l'interface fermée, la saisie n'est plus possible
-      });
+   rl.question('1. Lister les clients\n 2. Ajouter un client\n3. Rechercher un client par nom\n4. Vérifier la disponibilité des chambres \n99. Sortir\n', function (saisie) {
 
-   }
-/*On choisit ce que l'on rend disponible à l'extérieur d'un fichier car par défault tous est privé*/
-exports.demarrer= start;
+            switch (saisie) {
+
+            case '1':
+               console.log('Liste des clients');
+               var service = require('./service');
+               console.log (service.listerClient());
+               break;
+
+            case '2':
+
+               console.log("vous avez saisie 2");
+               break;
+            case '3':
+
+               console.log("vous avez saisie 3");
+               break;
+
+            case '4':
+
+               console.log("vous avez saisie 4");
+               break;
+
+            case '99':
+               console.log("Au revoir");
+               break;
+
+            default:
+               console.log("Veuillez re-saisir votre choix")
+         }  
+         rl.close();    
+      }
+
+   );
+}
+
+
